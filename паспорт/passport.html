@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>DOM_JS. Считываем информацию из DOM</title>
+</head>
+<body>
+
+<h1>DOM_JS. Считываем информацию из DOM</h1>
+
+<!-- ==================== НАВИГАЦИЯ ==================== -->
+<ul class="site-nav">
+    <li><a class="header__list-link" href="passport_find_edit.html">Кириллица на латиницу</a></li>
+    <li><a class="header__list-link" href="task.html">Задача</a></li>
+</ul>
+
+<!-- ==================== ПАСПОРТ ==================== -->
+<div class="passport">
+    <div class="passport__title">ПАСПОРТ</div>
+
+    <p><span class="label">Фамилия: </span><b id="surname">Артамонова</b></p>
+    <p><span class="label">Имя: </span><b id="name">Ксения</b></p>
+    <p><span class="label">Отчество: </span><b id="patronymic">Юрьевна</b></p>
+    <p><span class="label">Пол: </span><b>Женский</b></p>
+    <p><span class="label">Дата рождения: </span><b>12.10.<i id="year">2007</i></b></p>
+    <p><span class="label">Место рождения: </span><b id="city">г. Москва</b></p>
+</div>
+
+<!-- ==================== РЕЗУЛЬТАТ ИЗ DOM ==================== -->
+<div class="result">
+    <strong>Данные, полученные из DOM:</strong><br>
+    Фамилия: <span id="out-surname">—</span><br>
+    Имя: <span id="out-name">—</span><br>
+    Год рождения: <span id="out-year">—</span>
+</div>
+
+<!-- ==================== СКРИНШОТ ==================== -->
+<figure class="screenshot">
+    <img src="images/devtools_screenshot.png" alt="Скриншот DevTools с получением данных из DOM">
+    <figcaption>
+        Получение фамилии, имени и года рождения через Инструменты разработчика
+    </figcaption>
+</figure>
+
+<!-- ==================== СКРИПТ ==================== -->
+<script>
+    var p = document.getElementsByTagName('p');
+
+    var surname = p[0].childNodes[1].innerText;                // "Артамонова"
+    var name    = p[1].childNodes[1].innerText;                // "Ксения"
+    var year    = p[4].childNodes[1].childNodes[1].innerText;  // "2007"
+
+    document.getElementById('out-surname').innerText = surname;
+    document.getElementById('out-name').innerText    = name;
+    document.getElementById('out-year').innerText    = year;
+</script>
+
+</body>
+</html>
